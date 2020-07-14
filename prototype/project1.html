@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>COMPSCI345 A3</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> <!-- to use Google Font -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> <!-- Material icons from Google -->
+            <!-- https://material.io/resources/icons/?style=baseline -->
+            <!-- "Our [Google] icons are free for everyone to use. Please don’t try to sell them." -->
+
+    </head>
+   <body>
+        <div class="header">
+            <div class="logo">
+                <!--<h1>(some logo)</h1>-->
+                <img src="logo.png" onclick="window.location.href='index.html';">
+            </div>
+            <div class="search">
+                <button type="submit" class="submit">
+                    <i class="material-icons md-36">search</i>
+                </button><!-- SEARCH ICON <i class="material-icons md-36">search</i> -->
+                <input type="text" placeholder="Search your files">
+                <i class="material-icons md-36" id="page">help</i>
+                <i class="material-icons md-36" id="page">settings</i>
+            </div>
+        </div>
+
+        <div class="navigation"> <!-- SIDEBAR -->
+            <div class="buttonsContainer"> <!-- CREATE, UPLOAD and SHARE buttons -->
+                <button type="button" id="Create" class="mode"><i class="material-icons md-36" id="button">create</i>Create</button>
+                <button type="button" id="Upload" class="mode"><i class="material-icons md-36" id="button">upgrade</i>Upload</button>
+                <button type="button" id="Share" class="mode" onclick="window.location.href='Part-1.2.html';"><i class="material-icons md-36" id="button">person_add_alt_1</i>Share</button>
+            </div>
+            <div class="others"> <!-- the 'links' under the 3 buttons -->
+                <a href="personal.html" class="links">Personal</a>
+                <a href="javascript:void(0)" id="Shared" class="links">Shared with me</a>
+                <a href="index.html" id="Projects" class="links">Projects</a>
+                <a href="javascript:void(0)" id="Tagged" class="links">Tagged</a>
+                <a href="javascript:void(0)" id="Recent" class="links">Recent</a>
+                <a href="javascript:void(0)" id="Rubbish" class="links">Bin</a>    
+            </div>
+
+            <div class="random"> <!-- i put the 'storage' thing just 'cause -->
+                <i class="material-icons md-36" id="storage">dns</i>
+                <h4 id="text">Storage</h4>
+            </div>
+        </div>
+
+        <div class="bheader">
+            <ul class="breadcrumb">
+                <li class="item"><a href="index.html" class="crumb">Projects</a></li>
+                <li class="item"><a href="project1.html" class="crumb">Project One</a></li>
+            </ul>
+        </div>
+
+        <div class="groupwork"> <!-- when 'Projects' is clicked-->
+            <div class="projectHead">
+                <h2 id="One">Project One</h2><h5 class="heading">(3 members)</h5>
+            </div>
+            
+            <!--<img src="logo.png">-->
+            <!--<img src="project2.png">-->
+            <table>
+                <tr>  <!-- tr means row -->
+                    <th id="name">Name</th> <!-- th means header -->
+                    <th id="date">Last Modified</th>
+                    <th id="size">File Size</th>
+                </tr>
+                <tr>
+                    <td>Image One</td>
+                    <td>4 June 2020</td>
+                    <td>100 KB</td>
+                </tr>
+                <tr>
+                    <td>Image Two</td>
+                    <td>4 June 2020</td>
+                    <td>160 KB</td>
+                </tr>
+                <tr>
+                    <td>Document 4</td>
+                    <td>4 June 2020</td>
+                    <td>100 KB</td>
+                </tr>
+                <tr>
+                    <td>Image Three</td>
+                    <td>4 June 2020</td>
+                    <td>200 KB</td>
+                </tr>
+                <tr>
+                    <td>Video One</td>
+                    <td>1 June 2020</td>
+                    <td>500 MB</td>
+                </tr>
+              </table>
+            </div>
+   </body>
+</html>
