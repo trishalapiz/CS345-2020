@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="sharewindow">
+            <div id="sharedetails">
+                <button class = delete onclick="window.location.href='index.html';">X</button> <!--onclick will go back to the home page (what trisha did)-->
+                <h2>Share Multiple Documents</h2>
+                
+                <!-- For inputting email recipients. -->
+                <label>&#x270E;</label> 
+                <input type="text" style="margin:0px 0px 0px 6.5px;" class = "recipients" placeholder = "Can Edit">
+                <hr>
+                <label>&#128083;</label>
+                <input type="text" class = "recipients" placeholder="Can View">
+                <hr><br><br>
+
+                <div class = sectionBorder>
+                    
+                    <!-- Section 1 detail input (files, message), initially display:block. -->
+                    <div class = "section" id = "1" style="display:block;">               
+                        <p style="margin:0px;">Section 1:
+                        <input type="text" class="subject" placeholder="Subject">
+                        <button class = delete>Delete Section</button><hr></p>
+                        <input type ="text" class=messageInput placeholder="Message">
+                        <input type="file"> 
+                        <br><br><hr>
+                    </div>
+                    
+                    <!-- Section 2 detail input (files, message), initially display:none. -->
+                    <!-- Becomes displayed when the "New Section" button is clicked.-->
+                    <div class = "section" id = "2">
+                        <br><p style="margin:0px;">Section 2:
+                            <input type="text" class="subject" placeholder="Subject">
+                            <button class = delete>Delete Section</button><hr></p>
+                        <input input="text" class=messageInput placeholder="Message">
+                        <input type="file">        
+                        <br><br><hr>
+                    </div>
+                    
+                    <!-- Section 3 detail input (files, message), initially display:none. -->
+                    <!-- Becomes displayed when the "New Section" button is clicked, after Section 2 is visible. -->
+                    <div class = "section" id = "3">
+                        <br><p style="margin:0px;">Section 3:
+                            <input type="text" class="subject" placeholder="Subject">
+                            <button class="delete">Delete Section</button><hr></p>
+                        <input input="text" class=messageInput placeholder="Message">
+                        <input type="file"> 
+                        <br><br><hr>
+                    </div>
+                    
+                    <!-- Section 4 detail input (files, message), initially display:none. -->
+                    <!-- Becomes displayed when the "New Section" button is clicked, after Section 3 is visible. -->
+                    <div class = "section" id = "4">
+                        <br><p style="margin:0px;">Section 4:
+                            <input type="text" class="subject" placeholder="Subject">
+                            <button class = delete onclick = deleteSection()>Delete Section</button><hr></p>
+                        <input input="text" class=messageInput placeholder="Message">
+                        <input type="file">         
+                        <br><br><hr>
+                    </div>
+                    
+                    <!-- Section 5 detail input (files, message), initially display:none. -->
+                    <!-- Becomes displayed when the "New Section" button is clicked, after Section 4 is visible. -->
+                    <div class = "section" id = "5">
+                        <br><p style="margin:0px;">Section 5:
+                            <input type="text" class="subject" placeholder="Subject">
+                            <button class = delete onclick = deleteSection() >Delete Section</button><hr></p>
+                        <input input="text" class=messageInput placeholder="Message">
+                        <input type="file"><br><hr>
+                    </div>
+
+                    <!-- On click adds new section. -->
+                    <button onclick = addSection() id="newsection">New Section</button> 
+                </div>
+                <br>
+
+                <!--- On click will lead to advanced settings pop-up. -->
+                <button id='advanced' onclick = showAdvanced()>Advanced Settings</button> 
+                
+                <!--- On click will lead to sent success message. -->
+                <button class="sendbutton" onclick=showSuccessMessage()>Send</button> 
+
+                <!--onclick will go back to the home page, with "draft saved" success message. -->
+                <button class="savebutton" onclick=saveDraft()>Save (As Draft)</button> 
+
+                <!-- On click will go back to the homepage, with a cancellation confirm message. -->
+                <button class="cancelbutton" onclick = cancelPressed();>Cancel</button> 
+            </div>
+            
+            <!-- The success message for after the message is sent. -->
+            <div id='successmessage'>
+                <p>Your message(s) have been sent!</p>
+                <button class="cancelbutton" onclick="window.location.href='index.html';">Back</button> <!-- Go back to home screen. -->
+            </div>
+            
+            <!-- The success messages for after the draft(s) being saved. -->
+            <div id='saveDraft'>
+                <p>Your draft(s) have been saved!</p>
+                <button class="cancelbutton" onclick=>Back</button> <!-- Go back to home screen. -->
+            </div>
+                    
+        </div> 
+        
+        <!-- Advanced settings pop-up. -->
+        <div id = 'advancedwindow'>
+            <h3>Advanced Settings</h3>
+            <!-- Checkboxes for the advanced options. -->
+            <div class =checkboxes>
+                <input type = checkbox>
+                <label>Editors can change permissions and share.</label>
+                <br>
+                <input type = checkbox>
+                <label>Viewers can comment, download, print, and copy.</label>
+                <br>
+                <br>
+                <br>
+                <input type = checkbox>
+                <label>Set as Default Settings</label>    
+            </div>            
+
+            <!-- On click leads back to the previous "Share Multiple Documents" pop-up. -->
+            <button class="cancelbutton" onclick=showsharewindow()>Back</button>
+        </div>
+
+        <!-- Confirmation if "Cancel" is clicked, in case of error or accident. -->
+        <div id="cancelconfirm">
+            <p>Your share message will not be saved. Are you sure you want to cancel?</p>
+            <button class="sendbutton" onclick="window.location.href='index.html';">Confirm</button> <!-- Go back to home screen. -->
+            <button class="savebutton" onclick=saveDraft()>Save (As Draft)</button> <!-- Saves draft with success message. -->
+            <button class="cancelbutton" onclick = showsharewindow()>Go Back</button><!-- Go back to previous "Share Multiple Documents" pop-up. -->
+        </div>
+        
+    </body>    
+
+<style>
+    body {
+        font-family:Helvetica;
+        position:relative;
+    }
+    #sharewindow {
+        margin: 20px auto auto auto;
+        left:30vw;
+        z-index:5;
+        width:450px;
+        padding: 40px 60px 100px 60px;
+        background-color: white;
+        box-shadow: 0px 0px 10px rgba(196, 199, 204, 0.7);
+        position:absolute;
+    } 
+    #advancedwindow {
+        margin: 100px auto;
+        z-index:10;
+        display:none;
+        width:350px;
+        height:130px;
+        padding: 40px 60px 100px 60px;
+        background-color: white;
+        box-shadow: 0px 0px 10px rgba(196, 199, 204, 0.7);
+        position:absolute;
+        left:34vw;
+    }
+    #cancelconfirm {
+        margin: 100px auto;
+        display:none;
+        z-index:10;
+        width:350px;
+        height:25px;
+        padding: 40px 60px 120px 60px;
+        background-color: white;
+        box-shadow: 0px 0px 10px rgba(196, 199, 204, 0.7);
+        position:absolute;
+        left:34vw;
+    }
+    #successmessage, #saveDraft {
+        display:none;
+        margin: 10px auto;
+        padding:20px;
+    }  
+    input:focus {
+        outline: none;
+    }
+    .recipients {
+        width: 90%;
+        border: 0
+    }
+    .subject {
+        border:0; 
+        width:50%;
+    }
+    div.section {
+        display: none;
+    }
+    input.messageInput {
+        text-align: left;
+        word-break: break-word;
+        padding: 0;
+        height: 50px;
+        width: 50%;
+        border:0;
+    }
+    hr{
+        border-color:rgb(150, 147, 147, 0.4);
+    }
+    div.sectionBorder {
+        border:1px solid #e3e3e3;
+        padding:10px;
+    }
+    #newsection {
+        background-color:white;
+        padding:10px;
+        border-style: none;
+        color:grey;
+        font-size:11px;
+    }
+    .sendbutton, .savebutton, .cancelbutton {
+        border-style:none;
+        padding:8px 12px;
+        border-radius: 4px;
+        margin:10px 1px;
+        float:right;
+    }
+    .sendbutton {
+        background-color:#ACD34B;
+    }
+    .savebutton {
+        background-color: rgb(150, 147, 147,0.7);
+    }
+    .cancelbutton {
+        background-color:rgb(150, 147, 147, 0.4);
+    }
+    #advanced {
+        background-color:white;
+        padding:10px;
+        border-style: none;
+        color:grey;
+        font-size:11px;
+    }
+    button.delete {
+        float: right;
+        margin:0px 5px;
+        background-color:white;
+        padding:8px;
+        border-style: none;
+        color:grey;
+        font-size:11px;
+    }
+    div.checkboxes {
+        font-size: 14px;
+    }
+  
+</style>
+
+<script>
+    // For this high fidelity prototype, the maximum sections have been set at 5.
+    var count = 2;
+    function addSection() { 
+        if (count <= 5) {
+            document.getElementById(JSON.stringify(count)).style = "display:block;";
+            count = count + 1 
+        } 
+        else {
+            alert("Maximum 5 sections.")
+        }
+    }
+
+    // The "Delete Section" button is pressed, the relevant section will be removed.
+    // For this high fidelity prototype, only section 5 will be removed just to see the f.
+    function deleteSection() { 
+        document.getElementById(JSON.stringify(5)).style = "display:none;";
+        count = count - 1
+    }
+
+    // Share button was clicked on the homepage, this will lead to the Share Multiple Documents apppearing
+    function showsharewindow() { 
+        document.getElementById("advancedwindow").style.display = "none";
+        document.getElementById("sharewindow").style.opacity = "1.0";
+        document.getElementById("cancelconfirm").style.display = "none";
+    }
+
+    // The "Advanced Settings" button was clicked, a pop up will appear, 
+    // asking for user preferences on user privileges.
+    function showAdvanced() { 
+        document.getElementById("advancedwindow").style.display = "block";
+        document.getElementById("sharewindow").style.opacity = "0.5";
+    }
+
+    // User has clicked the "Send" button on "Share Multiple Documents" pop-up, and a
+    // feedback box will appear to let user know that it was successful.
+    function showSuccessMessage() { 
+        document.getElementById("successmessage").style.display = "block";
+        document.getElementById("sharedetails").style.display = "none";
+        document.getElementById("sharewindow").style.padding = "10px";
+        document.getElementById("sharewindow").style.margin = "100px auto auto auto";
+    }
+
+    // Cancel on Share Multiple Documents was pressed, confirmation box will appear.
+    function cancelPressed() { 
+        document.getElementById("sharewindow").style.opacity = "0.5";
+        document.getElementById("cancelconfirm").style.display = "block";
+    }
+
+    // On click user exits "Share Multiple Documents" screen,
+    // the draft will be saved in a section on the main screen.
+    function saveDraft() { 
+        document.getElementById("sharedetails").style.display = "none";
+        document.getElementById("saveDraft").style.display = "block";
+        document.getElementById("sharewindow").style.padding = "10px";
+        document.getElementById("sharewindow").style.opacity = "1.0";
+        document.getElementById("sharewindow").style.margin = "100px auto auto auto";
+        document.getElementById("cancelconfirm").style.display = "none";
+    }
+    //function backtoTrisha(){}
+</script>
+</html>
+
+<!--backtoTrisha - Go Back, X button and save as draft-->
